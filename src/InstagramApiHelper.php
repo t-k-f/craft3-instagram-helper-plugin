@@ -2,15 +2,15 @@
 /**
  * Instagram API Helper plugin for Craft CMS 3.x
  *
- * A Instagram API Helper
+ * A Helper for the Instagram API
  *
- * @link      https://janthoma.ch
+ * @link      https://t-k-f.ch
  * @copyright Copyright (c) 2017 Jan Thoma
  */
 
-namespace tkfinstagramapihelper\instagramapihelper;
+namespace tkf\instagramapihelper;
 
-use tkfinstagramapihelper\instagramapihelper\models\Settings;
+use tkf\instagramapihelper\models\Settings;
 
 use Craft;
 use craft\base\Plugin;

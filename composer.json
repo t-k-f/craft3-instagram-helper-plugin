@@ -1,6 +1,6 @@
 {
-    "name": "tkfinstagramapihelper/instagram-api-helper",
-    "description": "A Instagram API Helper",
+    "name": "tkf/instagram-api-helper",
+    "description": "A Helper for the Instagram API",
     "type": "craft-plugin",
     "version": "1.0.0",
     "keywords": [
@@ -18,7 +18,7 @@
     "authors": [
         {
             "name": "Jan Thoma",
-            "homepage": "https://janthoma.ch"
+            "homepage": "https://t-k-f.ch"
         }
     ],
     "require": {
@@ -32,7 +32,7 @@
     ],
     "autoload": {
         "psr-4": {
-          "tkfinstagramapihelper\\instagramapihelper\\": "src/"
+          "tkf\\instagramapihelper\\": "src/"
         }
     },
     "extra": {
@@ -42,6 +42,6 @@
         "hasCpSettings": true,
         "hasCpSection": false,
         "changelogUrl": "https://raw.githubusercontent.com/craft3-instagram-helper-plugin/instagram-api-helper/master/CHANGELOG.md",
-        "class": "tkfinstagramapihelper\\instagramapihelper\\InstagramApiHelper"
+        "class": "tkf\\instagramapihelper\\InstagramApiHelper"
     }
 }

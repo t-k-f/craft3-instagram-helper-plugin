@@ -2,13 +2,13 @@
 /**
  * Instagram API Helper plugin for Craft CMS 3.x
  *
- * A Instagram API Helper
+ * A Helper for the Instagram API
  *
- * @link      https://janthoma.ch
+ * @link      https://t-k-f.ch
  * @copyright Copyright (c) 2017 Jan Thoma
  */
 
-namespace tkfinstagramapihelper\instagramapihelper\assetbundles\InstagramApiHelper;
+namespace tkf\instagramapihelper\assetbundles\InstagramApiHelper;
 
 use Craft;
 use craft\web\AssetBundle;
@@ -29,7 +29,7 @@ class InstagramApiHelperAsset extends AssetBundle
      */
     public function init()
     {
-        $this->sourcePath = "@tkfinstagramapihelper/instagramapihelper/assetbundles/instagramapihelper/dist";
+        $this->sourcePath = "@tkf/instagramapihelper/assetbundles/instagramapihelper/dist";
 
         $this->depends = [
             CpAsset::class,
