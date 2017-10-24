@@ -1,0 +1,25 @@
+{#
+/**
+ * Instagram API Helper plugin for Craft CMS 3.x
+ *
+ * Instagram API Helper Settings.twig
+ *
+ * @author    Jan Thoma
+ * @copyright Copyright (c) 2017 Jan Thoma
+ * @link      https://janthoma.ch
+ * @package   InstagramApiHelper
+ * @since     1.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{% do view.registerAssetBundle("tkfinstagramapihelper\\instagramapihelper\\assetbundles\\instagramapihelper\\InstagramApiHelperAsset") %}
+
+{{ forms.textField({
+    label: 'Some Field',
+    instructions: 'Enter some setting here.',
+    id: 'someAttribute',
+    name: 'someAttribute',
+    value: settings['someAttribute']})
+}}

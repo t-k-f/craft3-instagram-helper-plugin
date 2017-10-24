@@ -1,0 +1,111 @@
+<?php
+/**
+ * Instagram API Helper plugin for Craft CMS 3.x
+ *
+ * A Instagram API Helper
+ *
+ * @link      https://janthoma.ch
+ * @copyright Copyright (c) 2017 Jan Thoma
+ */
+
+namespace tkfinstagramapihelper\instagramapihelper;
+
+use tkfinstagramapihelper\instagramapihelper\models\Settings;
+
+use Craft;
+use craft\base\Plugin;
+use craft\services\Plugins;
+use craft\events\PluginEvent;
+use craft\web\UrlManager;
+use craft\events\RegisterUrlRulesEvent;
+
+use yii\base\Event;
+
+/**
+ * Class InstagramApiHelper
+ *
+ * @author    Jan Thoma
+ * @package   InstagramApiHelper
+ * @since     1.0.0
+ *
+ */
+class InstagramApiHelper extends Plugin
+{
+    // Static Properties
+    // =========================================================================
+
+    /**
+     * @var InstagramApiHelper
+     */
+    public static $plugin;
+
+    // Public Methods
+    // =========================================================================
+
+    /**
+     * @inheritdoc
+     */
+    public function init()
+    {
+        parent::init();
+        self::$plugin = $this;
+
+        Event::on(
+            UrlManager::class,
+            UrlManager::EVENT_REGISTER_SITE_URL_RULES,
+            function (RegisterUrlRulesEvent $event) {
+                $event->rules['siteActionTrigger1'] = 'instagram-api-helper/default';
+            }
+        );
+
+        Event::on(
+            UrlManager::class,
+            UrlManager::EVENT_REGISTER_CP_URL_RULES,
+            function (RegisterUrlRulesEvent $event) {
+                $event->rules['cpActionTrigger1'] = 'instagram-api-helper/default/do-something';
+            }
+        );
+
+        Event::on(
+            Plugins::class,
+            Plugins::EVENT_AFTER_INSTALL_PLUGIN,
+            function (PluginEvent $event) {
+                if ($event->plugin === $this) {
+                }
+            }
+        );
+
+        Craft::info(
+            Craft::t(
+                'instagram-api-helper',
+                '{name} plugin loaded',
+                ['name' => $this->name]
+            ),
+            __METHOD__
+        );
+    }
+
+    // Protected Methods
+    // =========================================================================
+
+    /**
+     * @inheritdoc
+     */
+    protected function createSettingsModel()
+    {
+        return new Settings();
+    }
+
+    /**
+     * @inheritdoc
+     */
+    protected function settingsHtml(): string
+    {
+        return Craft::$app->view->renderTemplate(
+            'instagram-api-helper/settings',
+            [
+                'settings' => $this->getSettings()
+            ]
+        );
+    }
+}

@@ -1,0 +1,46 @@
+<?php
+/**
+ * Instagram API Helper plugin for Craft CMS 3.x
+ *
+ * A Instagram API Helper
+ *
+ * @link      https://janthoma.ch
+ * @copyright Copyright (c) 2017 Jan Thoma
+ */
+
+namespace tkfinstagramapihelper\instagramapihelper\models;
+
+use tkfinstagramapihelper\instagramapihelper\InstagramApiHelper;
+
+use Craft;
+use craft\base\Model;
+
+/**
+ * @author    Jan Thoma
+ * @package   InstagramApiHelper
+ * @since     1.0.0
+ */
+class Settings extends Model
+{
+    // Public Properties
+    // =========================================================================
+
+    /**
+     * @var string
+     */
+    public $someAttribute = 'Some Default';
+
+    // Public Methods
+    // =========================================================================
+
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            ['someAttribute', 'string'],
+            ['someAttribute', 'default', 'value' => 'Some Default'],
+        ];
+    }
+}
