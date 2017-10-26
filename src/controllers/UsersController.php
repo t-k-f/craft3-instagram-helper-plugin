@@ -20,7 +20,7 @@ use craft\web\Controller;
  * @package   InstagramApiHelper
  * @since     1.0.0
  */
-class DefaultController extends Controller
+class UsersController extends Controller
 {
 
     // Protected Properties

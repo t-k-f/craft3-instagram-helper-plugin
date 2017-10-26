@@ -51,14 +51,6 @@ class InstagramApiHelper extends Plugin
         self::$plugin = $this;
 
         Event::on(
-            UrlManager::class,
-            UrlManager::EVENT_REGISTER_SITE_URL_RULES,
-            function (RegisterUrlRulesEvent $event) {
-                $event->rules['siteActionSelf'] = 'instagram-api-helper/self';
-            }
-        );
-
-        Event::on(
             Plugins::class,
             Plugins::EVENT_AFTER_INSTALL_PLUGIN,
             function (PluginEvent $event) {
