@@ -18,26 +18,30 @@ To install the plugin, follow these instructions.
 
 2. Then tell Composer to load the plugin:
 
-        composer require craft3-instagram-helper-plugin/instagram-api-helper
+        composer require tkf/instagram-api-helper
 
 3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Instagram API Helper.
 
 ## Instagram API Helper Overview
 
--Insert text here-
+This plugins mirrors the various endpoints of the instagram-API to your server and
+keeps your API Keys secure. It also caches the responses so you don't hit the polling
+Limit.
 
 ## Configuring Instagram API Helper
 
--Insert text here-
+1. Insert your Instagram API Token
+2. Define the path prefix (Defaults to /api)
 
-## Using Instagram API Helper
+## Endpoints
 
--Insert text here-
+    /self/recent.json => get recent media
 
 ## Instagram API Helper Roadmap
 
 Some things to do, and ideas for potential features:
 
-* Release it
+* Port existing codebase to Craft3
+* Add more hooks
 
 Brought to you by [Jan Thoma](https://t-k-f.ch)
