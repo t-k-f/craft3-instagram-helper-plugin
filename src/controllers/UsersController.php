@@ -41,7 +41,7 @@ class UsersController extends Controller
      */
     public function actionSelf()
     {
-        $result = print_r($this->getSettings())
+        $result = print_r($this->getSettings());
 
         return $result;
     }
