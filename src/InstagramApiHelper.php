@@ -54,15 +54,7 @@ class InstagramApiHelper extends Plugin
             UrlManager::class,
             UrlManager::EVENT_REGISTER_SITE_URL_RULES,
             function (RegisterUrlRulesEvent $event) {
-                $event->rules['siteActionTrigger1'] = 'instagram-api-helper/default';
-            }
-        );
-
-        Event::on(
-            UrlManager::class,
-            UrlManager::EVENT_REGISTER_CP_URL_RULES,
-            function (RegisterUrlRulesEvent $event) {
-                $event->rules['cpActionTrigger1'] = 'instagram-api-helper/default/do-something';
+                $event->rules['siteActionSelf'] = 'instagram-api-helper/self';
             }
         );
 
