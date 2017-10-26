@@ -41,7 +41,7 @@ class UsersController extends Controller
      */
     public function actionSelf()
     {
-        $result = 'Welcome to the DefaultController self method';
+        $result = print_r($this->getSettings())
 
         return $result;
     }
