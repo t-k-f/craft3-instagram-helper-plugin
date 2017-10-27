@@ -59,6 +59,13 @@ class UsersController extends Controller
         }
     }
 
+    private function response ($path)
+    {
+        $response = $this->request($path);
+
+        return $this->asJson($response);
+    }
+
     private function checkParams ($params)
     {
         $post = Craft::$app->getRequest()->getBodyParams();
@@ -81,48 +88,42 @@ class UsersController extends Controller
     public function actionSelf()
     {
         $path = $this->apiUrl . '/self/?access_token=' . $this->settings()['instagramApiToken'];
-        $response = $this->request($path);
 
-        return $this->asJson($response);
+        return $this->response($path);
     }
 
     public function actionUser($userId)
     {
         $path = $this->apiUrl . '/' . $userId . '/?access_token=' . $this->settings()['instagramApiToken'];
-        $response = $this->request($path);
 
-        return $this->asJson($response);
+        return $this->response($path);
     }
 
     public function actionSelfRecent()
     {
         $path = $this->apiUrl . '/self/media/recent/?access_token=' . $this->settings()['instagramApiToken'] . $this->checkParams(['count', 'max_id', 'min_id']);
-        $response = $this->request($path);
 
-        return $this->asJson($response);
+        return $this->response($path);
     }
 
     public function actionUserRecent($userId)
     {
         $path = $this->apiUrl . '/' . $userId . '/media/recent/?access_token=' . $this->settings()['instagramApiToken'] . $this->checkParams(['count', 'max_id', 'min_id']);
-        $response = $this->request($path);
 
-        return $this->asJson($response);
+        return $this->response($path);
     }
 
     public function actionSelfLiked()
     {
         $path = $this->apiUrl . '/self/media/liked/?access_token=' . $this->settings()['instagramApiToken'] . $this->checkParams(['count', 'max_like_id']);
-        $response = $this->request($path);
 
-        return $this->asJson($response);
+        return $this->response($path);
     }
 
     public function actionSearch()
     {
         $path = $this->apiUrl . '/search?q=tkf&access_token=' . $this->settings()['instagramApiToken'];
-        $response = $this->request($path);
 
-        return $this->asJson($response);
+        return $this->response($path);
     }
 }
