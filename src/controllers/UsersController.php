@@ -32,6 +32,36 @@ class UsersController extends Controller
      * @access protected
      */
     protected $allowAnonymous = true;
+    private $apiUrl = 'https://api.instagram.com/v1/users';
+
+    // Private Methods
+    // =========================================================================
+
+    private function settings()
+    {
+        return \tkf\instagramapihelper\InstagramApiHelper::getInstance()->settings;
+    }
+
+    private function request($path)
+    {
+        $cacheKey = md5($path);
+        $cache = Craft::$app->cache->get($cacheKey);
+
+        if($cache !== false)
+        {
+            return $cache;
+        }
+        else
+        {
+            $curl = curl_init($path);
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            $result = json_decode(curl_exec($curl));
+            curl_close($curl);
+            Craft::$app->cache->set($cacheKey, $result, 60);
+
+            return $result;
+        }
+    }
 
     // Public Methods
     // =========================================================================
@@ -41,8 +71,49 @@ class UsersController extends Controller
      */
     public function actionSelf()
     {
-        $result = print_r($this->getSettings());
+        $path = $this->apiUrl . '/self/?access_token=' . $this->settings()['instagramApiToken'];
+        $response = $this->request($path);
 
-        return $result;
+        return $this->asJson($response);
+    }
+
+    public function actionSelfRecent()
+    {
+        $path = $this->apiUrl . '/self/media/recent/?access_token=' . $this->settings()['instagramApiToken'];
+        $response = $this->request($path);
+
+        return $this->asJson($response);
+    }
+
+    public function actionUser($userId)
+    {
+        $path = $this->apiUrl . '/' . $userId . '/?access_token=' . $this->settings()['instagramApiToken'];
+        $response = $this->request($path);
+
+        return $this->asJson($response);
+    }
+
+    public function actionUserRecent($userId)
+    {
+        $path = $this->apiUrl . '/' . $userId . '/media/recent/?access_token=' . $this->settings()['instagramApiToken'];
+        $response = $this->request($path);
+
+        return $this->asJson($response);
+    }
+
+    public function actionSelfLiked()
+    {
+        $path = $this->apiUrl . '/self/media/liked/?access_token=' . $this->settings()['instagramApiToken'];
+        $response = $this->request($path);
+
+        return $this->asJson($response);
+    }
+
+    public function actionSearch()
+    {
+        $path = $this->apiUrl . '/search?q=tkf&access_token=' . $this->settings()['instagramApiToken'];
+        $response = $this->request($path);
+
+        return $this->asJson($response);
     }
 }

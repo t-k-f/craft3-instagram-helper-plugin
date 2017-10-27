@@ -51,6 +51,19 @@ class InstagramApiHelper extends Plugin
         self::$plugin = $this;
 
         Event::on(
+            UrlManager::class,
+            UrlManager::EVENT_REGISTER_SITE_URL_RULES,
+            function (RegisterUrlRulesEvent $event) {
+                $event->rules['users/self.json'] = 'instagram-api-helper/users/self';
+                $event->rules['users/self/media/recent.json'] = 'instagram-api-helper/users/self-recent';
+                $event->rules['users/<userId:\d+>.json'] = 'instagram-api-helper/users/user';
+                $event->rules['users/<userId:\d+>/media/recent.json'] = 'instagram-api-helper/users/user-recent';
+                $event->rules['users/self/media/liked.json'] = 'instagram-api-helper/users/self-liked';
+                $event->rules['users/search.json'] = 'instagram-api-helper/users/search';
+            }
+        );
+
+        Event::on(
             Plugins::class,
             Plugins::EVENT_AFTER_INSTALL_PLUGIN,
             function (PluginEvent $event) {
