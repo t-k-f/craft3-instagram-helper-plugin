@@ -54,6 +54,10 @@ class InstagramApiHelper extends Plugin
             UrlManager::class,
             UrlManager::EVENT_REGISTER_SITE_URL_RULES,
             function (RegisterUrlRulesEvent $event) {
+
+                // User endpoints
+                // =========================================================================
+
                 $event->rules['users/self.json'] = 'instagram-api-helper/users/self';
                 $event->rules['users/self/media/recent.json'] = 'instagram-api-helper/users/self-recent';
                 $event->rules['users/<userId:\d+>.json'] = 'instagram-api-helper/users/user';
