@@ -35,13 +35,12 @@ Limit.
 
 ## Endpoints
 
-    /self/recent.json => get recent media
+    /users/self.json => user information
+    /users/self/media/recent.json => get recent media
+    /users/self/media/liked.json => get liked media
 
 ## Instagram API Helper Roadmap
 
-Some things to do, and ideas for potential features:
-
-* Port existing codebase to Craft3
-* Add more hooks
+    create twig tags
 
 Brought to you by [Jan Thoma](https://t-k-f.ch)
