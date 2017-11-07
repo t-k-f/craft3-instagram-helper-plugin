@@ -34,7 +34,7 @@ class Helpers extends Component
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         $result = json_decode(curl_exec($curl));
         curl_close($curl);
-        Craft::$app->cache->set($cacheKey, $result, 300);
+        Craft::$app->cache->set($cacheKey, $result, 30);
 
         return $result;
     }
