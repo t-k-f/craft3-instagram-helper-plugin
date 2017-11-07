@@ -50,20 +50,23 @@ class InstagramApiHelper extends Plugin
         parent::init();
         self::$plugin = $this;
 
+        $this->setComponents([
+            'helpers' => \tkf\instagramapihelper\services\helpers::class,
+        ]);
+
         Event::on(
             UrlManager::class,
             UrlManager::EVENT_REGISTER_SITE_URL_RULES,
             function (RegisterUrlRulesEvent $event) {
 
+                $baseUri = $this->getSettings()['baseUri'];
+
                 // User endpoints
                 // =========================================================================
 
-                $event->rules['users/self.json'] = 'instagram-api-helper/users/self';
-                $event->rules['users/self/media/recent.json'] = 'instagram-api-helper/users/self-recent';
-                $event->rules['users/<userId:\d+>.json'] = 'instagram-api-helper/users/user';
-                $event->rules['users/<userId:\d+>/media/recent.json'] = 'instagram-api-helper/users/user-recent';
-                $event->rules['users/self/media/liked.json'] = 'instagram-api-helper/users/self-liked';
-                $event->rules['users/search.json'] = 'instagram-api-helper/users/search';
+                $event->rules[$baseUri . '/users/self.json'] = 'instagram-api-helper/users/self';
+                $event->rules[$baseUri . '/users/self/media/recent.json'] = 'instagram-api-helper/users/self-recent';
+                $event->rules[$baseUri . '/users/self/media/liked.json'] = 'instagram-api-helper/users/self-liked';
             }
         );
 
