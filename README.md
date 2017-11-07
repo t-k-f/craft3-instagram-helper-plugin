@@ -24,7 +24,7 @@ To install the plugin, follow these instructions.
 
 ## Instagram API Helper Overview
 
-This plugins mirrors the various endpoints of the instagram-API to your server and
+This plugins mirrors the endpoints accessible in sandbox-mode from the instagram-API to your server and
 keeps your API Keys secure. It also caches the responses so you don't hit the polling
 Limit.
 
