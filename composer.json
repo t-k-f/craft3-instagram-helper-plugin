@@ -2,7 +2,7 @@
     "name": "tkf/instagram-api-helper",
     "description": "A Helper for the Instagram API",
     "type": "craft-plugin",
-    "version": "1.0.5",
+    "version": "2.0.0",
     "keywords": [
         "craft",
         "cms",
@@ -29,7 +29,7 @@
     "extra": {
         "name": "Instagram API Helper",
         "handle": "instagram-api-helper",
-        "schemaVersion": "1.0.5",
+        "schemaVersion": "2.0.0",
         "hasCpSettings": true,
         "hasCpSection": false,
         "changelogUrl": "https://raw.githubusercontent.com/craft3-instagram-helper-plugin/instagram-api-helper/master/CHANGELOG.md",
