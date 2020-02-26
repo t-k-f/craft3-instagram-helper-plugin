@@ -31,13 +31,13 @@ Limit.
 ## Configuring Instagram API Helper
 
 1. Insert your Instagram API Token
-2. Define the path prefix (Defaults to /api)
+2. Enter your Instagram User Id
+3. Define the path prefix (Defaults to /api)
 
 ## Endpoints
 
-    /users/self.json => user information
-    /users/self/media/recent.json => get recent media
-    /users/self/media/liked.json => get liked media
+    /me.json => user information
+    /media.json => get recent media
 
 ## Instagram API Helper Roadmap
 
