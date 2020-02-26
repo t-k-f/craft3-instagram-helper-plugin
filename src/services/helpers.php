@@ -20,7 +20,7 @@ class Helpers extends Component
     // Private Methods
     // =========================================================================
 
-    private function getRequest($path)
+    private function getRequest($path, $token)
     {
         $cacheKey = md5($path);
         $cache = Craft::$app->cache->get($cacheKey);
@@ -30,8 +30,13 @@ class Helpers extends Component
             return $cache;
         }
 
+        $headers = [
+            'Authorization: Bearer ' . $token
+        ];
+
         $curl = curl_init($path);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
         $result = json_decode(curl_exec($curl));
         curl_close($curl);
         Craft::$app->cache->set($cacheKey, $result, 30);
@@ -44,7 +49,12 @@ class Helpers extends Component
 
     public function getAccessToken()
     {
-        return '?access_token=' . InstagramApiHelper::getInstance()->settings['instagramApiToken'];
+        return InstagramApiHelper::getInstance()->settings['instagramApiToken'];
+    }
+
+    public function getUserId()
+    {
+        return InstagramApiHelper::getInstance()->settings['instagramApiUserId'];
     }
 
     public function getPostParams ($params)
@@ -54,9 +64,11 @@ class Helpers extends Component
 
         foreach ($params as $param)
         {
+            $foo = (strlen($queryString) == 0) ? '?' : '&';
+
             if(isset($post[$param]))
             {
-                $queryString .= '&' . $param . '=' . $post[$param];
+                $queryString .= $foo . $param . '=' . $post[$param];
             }
         }
 
@@ -67,8 +79,8 @@ class Helpers extends Component
     {
         $token = $this->getAccessToken();
         $post = $this->getPostParams($params);
-        $path = $base . '/' . $endpoint . '/' . $token . $post;
+        $path = $base . '/' . $endpoint . $post;
 
-        return $this->getRequest($path);
+        return $this->getRequest($path, $token);
     }
 }

@@ -61,12 +61,15 @@ class InstagramApiHelper extends Plugin
 
                 $baseUri = $this->getSettings()['baseUri'];
 
-                // User endpoints
+                // User endpoint
                 // =========================================================================
 
-                $event->rules[$baseUri . '/users/self.json'] = 'instagram-api-helper/users/self';
-                $event->rules[$baseUri . '/users/self/media/recent.json'] = 'instagram-api-helper/users/self-recent';
-                $event->rules[$baseUri . '/users/self/media/liked.json'] = 'instagram-api-helper/users/self-liked';
+                $event->rules[$baseUri . '/me.json'] = 'instagram-api-helper/me';
+
+                // Media endpoint
+                // =========================================================================
+
+                $event->rules[$baseUri . '/media.json'] = 'instagram-api-helper/media';
             }
         );
 

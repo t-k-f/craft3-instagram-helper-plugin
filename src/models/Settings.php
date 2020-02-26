@@ -29,6 +29,7 @@ class Settings extends Model
      * @var string
      */
     public $instagramApiToken = null;
+    public $instagramApiUserId = null;
     public $baseUri = '/api';
 
     // Public Methods
@@ -42,6 +43,8 @@ class Settings extends Model
         return [
             ['instagramApiToken', 'string'],
             ['instagramApiToken', 'default', 'value' => null],
+            ['instagramApiUserId', 'string'],
+            ['instagramApiUserId', 'default', 'value' => null],
             ['baseUri', 'string'],
             ['baseUri', 'default', 'value' => '/api']
         ];

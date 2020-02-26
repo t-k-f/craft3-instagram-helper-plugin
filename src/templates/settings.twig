@@ -25,6 +25,14 @@
 }}
 
 {{ forms.textField({
+    label: 'Instagram User ID',
+    instructions: 'Enter your User ID here.',
+    id: 'instagramApiUserId',
+    name: 'instagramApiUserId',
+    value: settings['instagramApiUserId']})
+}}
+
+{{ forms.textField({
     label: 'Base Uri',
     instructions: 'Base Uri for endpoints',
     id: 'baseUri',
